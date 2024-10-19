@@ -34,12 +34,39 @@ concurrency:
 jobs:
   typos:
     runs-on: ubuntu-latest
+    env:
+      TYPOS_VERSION: 1.25.0
+      TYPOS_REVISION: f12cee1d8f3c79282a98ecb41d235aef17dfa8fd
     steps:
       - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           persist-credentials: false
       - uses: docker/setup-buildx-action@c47758b77c9736f4b2ef4073d4d51994fabfe349 # v3.7.1
+      - name: Generate docker metadata
+        id: docker-metadata
+        uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81 # v5.5.1
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/containers/typos
+          tags: |
+            type=ref,event=pr
+            type=semver,pattern={{version}},value=${{env.TYPOS_VERSION }}
+            type=semver,pattern={{major}},value=${{env.TYPOS_VERSION }},enable=${{ !startsWith(steps.bake.version, '0.') }}
+            type=semver,pattern={{major}}.{{minor}},value=${{env.TYPOS_VERSION }}
+            type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{env.TYPOS_VERSION }}
+          annotations: |
+            org.opencontainers.image.title=typos
+            org.opencontainers.image.description=Source code spell checker
+            org.opencontainers.image.source=https://github.com/crate-ci/typos
+            org.opencontainers.image.revision=${{ env.TYPOS_REVISION }}
+            org.opencontainers.image.licenses=Apache-2.0 OR MIT
+          bake-target: _docker-metadata-action
       - name: Build the typos container
         uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5.10.0
         with:
+          files: |
+            ./docker-bake.hcl
+            ${{ steps.docker-metadata.outputs.bake-file-annotations }}
+            ${{ steps.docker-metadata.outputs.bake-file-tags }}
           targets: typos
