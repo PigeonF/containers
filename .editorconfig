@@ -18,6 +18,9 @@ trim_trailing_whitespace = true
 [*.md]
 indent_size = 2
 
+[*.y{,a}ml]
+indent_size = 2
+
 # Keep the original formatting of the license files to aid automated license detection.
 [LICENSES/*.txt]
 indent_size = unset
