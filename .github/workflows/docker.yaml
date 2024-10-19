@@ -19,42 +19,57 @@ on:
   merge_group:
 
   workflow_dispatch:
+    inputs:
+      container:
+        required: true
+        description: The container to push to the registry
+        type: choice
+        options:
+          - typos
 
 permissions:
   contents: read # for actions/checkout
+  packages: write # for docker/bake-action
 
 defaults:
   run:
     shell: bash
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.container }}
   cancel-in-progress: true
 
 jobs:
   typos:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.container == 'typos' }}
     env:
       TYPOS_VERSION: 1.25.0
       TYPOS_REVISION: f12cee1d8f3c79282a98ecb41d235aef17dfa8fd
+      TYPOS_IMAGE: ghcr.io/${{ github.repository_owner }}/containers/typos
     steps:
       - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           persist-credentials: false
       - uses: docker/setup-buildx-action@c47758b77c9736f4b2ef4073d4d51994fabfe349 # v3.7.1
+      - uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate docker metadata
         id: docker-metadata
         uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81 # v5.5.1
         env:
           DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
         with:
-          images: ghcr.io/${{ github.repository_owner }}/containers/typos
+          images: ${{ env.TYPOS_IMAGE }}
           tags: |
             type=ref,event=pr
-            type=semver,pattern={{version}},value=${{env.TYPOS_VERSION }}
-            type=semver,pattern={{major}},value=${{env.TYPOS_VERSION }},enable=${{ !startsWith(steps.bake.version, '0.') }}
-            type=semver,pattern={{major}}.{{minor}},value=${{env.TYPOS_VERSION }}
-            type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{env.TYPOS_VERSION }}
+            type=semver,pattern={{version}},value=${{ env.TYPOS_VERSION }},enable=${{ github.event_name == 'workflow_dispatch' }}
+            type=semver,pattern={{major}},value=${{ env.TYPOS_VERSION }},enable=${{ github.event_name == 'workflow_dispatch' && !startsWith(steps.bake.version, '0.') }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ env.TYPOS_VERSION }},enable=${{ github.event_name == 'workflow_dispatch' }}
+            type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{ env.TYPOS_VERSION }},enable=${{ github.event_name == 'workflow_dispatch' }}
           annotations: |
             org.opencontainers.image.title=typos
             org.opencontainers.image.description=Source code spell checker
@@ -65,8 +80,12 @@ jobs:
       - name: Build the typos container
         uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5.10.0
         with:
+          push: ${{ github.event_name == 'workflow_dispatch' }}
           files: |
             ./docker-bake.hcl
             ${{ steps.docker-metadata.outputs.bake-file-annotations }}
             ${{ steps.docker-metadata.outputs.bake-file-tags }}
           targets: typos
+          set: |
+            *.cache-from=type=gha,scope=typos
+            *.cache-to=type=gha,scope=typos,mode=max
