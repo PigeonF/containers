@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
+#
+# SPDX-License-Identifier: Unlicense
+---
+name: Lint Repository
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+  merge_group:
+
+  workflow_dispatch:
+
+permissions:
+  contents: read # for actions/checkout
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  Lint-Repository:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft != true
+    steps:
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
+        with:
+          persist-credentials: false
+      - name: Check REUSE compliance
+        uses: fsfe/reuse-action@3ae3c6bdf1257ab19397fab11fd3312144692083 # v4.0.0
