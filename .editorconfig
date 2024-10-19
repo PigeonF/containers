@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+indent_size = 2
+
+# Keep the original formatting of the license files to aid automated license detection.
+[LICENSES/*.txt]
+indent_size = unset
