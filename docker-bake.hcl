@@ -9,7 +9,7 @@ group "default" {
 target "_docker-metadata-action" {}
 
 variable "TYPOS_VERSION" {
-  default = "1.25.0" # renovate: datasource=github-releases depName=crate-ci/typos
+  default = "v1.25.0" # renovate: datasource=github-releases depName=crate-ci/typos
 }
 
 target "_typos-version" {
@@ -20,5 +20,5 @@ target "_typos-version" {
 
 target "typos" {
   inherits = ["_typos-version", "_docker-metadata-action"]
-  context = "https://github.com/crate-ci/typos.git#v${TYPOS_VERSION}"
+  context = "https://github.com/crate-ci/typos.git#${TYPOS_VERSION}"
 }
