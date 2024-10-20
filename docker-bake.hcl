@@ -9,7 +9,7 @@ group "default" {
 target "_docker-metadata-action" {}
 
 variable "TYPOS_VERSION" {
-  default = "1.25.0"
+  default = "1.25.0" # renovate: datasource=github-releases depName=crate-ci/typos
 }
 
 target "_typos-version" {
