@@ -45,7 +45,7 @@ jobs:
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.container == 'typos' }}
     env:
       # renovate: datasource=github-releases depName=crate-ci/typos
-      TYPOS_VERSION: 1.25.0
+      TYPOS_VERSION: v1.25.0
       TYPOS_REVISION: f12cee1d8f3c79282a98ecb41d235aef17dfa8fd
       TYPOS_IMAGE: ghcr.io/${{ github.repository_owner }}/containers/typos
     steps:
