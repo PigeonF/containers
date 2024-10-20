@@ -25,7 +25,7 @@
         "^docker-bake\\.hcl$"
       ],
       "matchStrings": [
-        "\\s*default\\s?=\\s?\"(?<currentValue>.+?)\" # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s"
+        "\\s*default\\s?=\\s?\"(?<currentValue>.+?)\" # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s"
       ]
     },
     {
