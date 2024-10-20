@@ -1,0 +1,20 @@
+// SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
+//
+// SPDX-License-Identifier: CC0-1.0
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    ":configMigration",
+    ":maintainLockFilesWeekly",
+    ":dependencyDashboard",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "assignees": [
+    "PigeonF"
+  ],
+  "commitBodyTable": true
+}
