@@ -16,5 +16,17 @@
   "assignees": [
     "PigeonF"
   ],
-  "commitBodyTable": true
+  "commitBodyTable": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update variables in docker bake files",
+      "fileMatch": [
+        "^docker-bake\\.hcl$"
+      ],
+      "matchStrings": [
+        "\\s*default\\s?=\\s?\"(?<currentValue>.+?)\" # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s"
+      ]
+    }
+  ]
 }
