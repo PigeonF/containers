@@ -12,6 +12,12 @@ variable "TYPOS_VERSION" {
   default = "v1.26.0" # renovate: datasource=github-releases depName=crate-ci/typos
 }
 
+target "_common" {
+  args = {
+    BUILDKIT_MULTI_PLATFORM = true
+  }
+}
+
 target "_typos-version" {
   tags = [
     TYPOS_VERSION
@@ -19,6 +25,11 @@ target "_typos-version" {
 }
 
 target "typos" {
-  inherits = ["_typos-version", "_docker-metadata-action"]
+  inherits = ["_common", "_typos-version", "_docker-metadata-action"]
   context = "https://github.com/crate-ci/typos.git#${TYPOS_VERSION}"
+  # NOTE(PigeonF): As of v1.26.0, `typos` releases only x86_64 prebuilt binaries for linux (see
+  # <https://github.com/crate-ci/typos/releases/tag/v1.26.0>), so we follow the same pattern here.
+  platforms = [
+    "linux/amd64"
+  ]
 }
