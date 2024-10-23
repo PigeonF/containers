@@ -35,7 +35,7 @@
         "(^|/)action\\.ya?ml$"
       ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+[A-Za-z0-9_]+?_VERSION\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s(?:\\s+[A-Za-z0-9_]+?_REVISION\\s*:\\s*[\"']?(?<currentDigest>.+?)[\"']?\\s)?"
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+version\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s(?:\\s+revision\\s*:\\s*[\"']?(?<currentDigest>.+?)[\"']?\\s)?"
       ]
     }
   ]
