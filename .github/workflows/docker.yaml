@@ -56,11 +56,12 @@ jobs:
               org.opencontainers.image.description=Source code spell checker
               org.opencontainers.image.source=https://github.com/crate-ci/typos
               org.opencontainers.image.licenses=Apache-2.0 OR MIT
-          # TODO(PigeonF): Switch datasource, depName, and version on next committed release
+          # TODO(PigeonF): Switch datasource, and version on next committed release
           - name: committed
-            # renovate: datasource=git-refs depName=PigeonF/committed
-            version: PigeonF/push-tptvuxlroxqm
-            revision: bf4c100365ff04fcdfa5ba817fd58f4e79a97720
+            # renovate: datasource=git-refs depName=crate-ci/committed
+            version: master
+            revision: ed53d014d490285fe091d0495af23fface6866aa
+            edge: true
             image: ghcr.io/${{ github.repository_owner }}/containers/committed
             annotations: |
               org.opencontainers.image.description=Nitpicking commit history since beabf39
@@ -84,8 +85,7 @@ jobs:
         with:
           images: ${{ matrix.image }}
           tags: |
-            # TODO(PigeonF): Remove once committed uses a released version
-            type=edge,enable=${{ matrix.name == 'committed' }}
+            type=edge,enable=${{ matrix.edge || 'false' }}
             type=ref,event=pr
             type=semver,pattern={{major}},value=${{ matrix.version }},enable=${{ github.event_name == 'workflow_dispatch' && !startsWith(steps.bake.version, '0.') }}
             type=semver,pattern={{major}}.{{minor}},value=${{ matrix.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
