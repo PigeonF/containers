@@ -31,7 +31,8 @@ target "_typos-version" {
 }
 
 variable "COMMITTED_VERSION" {
-  default = "bf4c100365ff04fcdfa5ba817fd58f4e79a97720" # renovate: datasource=github-releases depName=crate-ci/committed
+  # TODO(PigeonF): Switch datasource, and version on next committed release
+  default = "ed53d014d490285fe091d0495af23fface6866aa" # renovate: currentValue=master datasource=git-refs depName=crate-ci/committed
 }
 
 target "_committed-version" {
