@@ -17,6 +17,17 @@
     "PigeonF"
   ],
   "commitBodyTable": true,
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/pigeonf/containers/*"
+      ],
+      "pinDigests": false
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
@@ -38,6 +49,18 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+version\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s(?:\\s+revision\\s*:\\s*[\"']?(?<currentDigest>.+?)[\"']?\\s)?"
       ]
+    },
+    {
+      "customType": "regex",
+      "description": "Update container image versions in readme",
+      "fileMatch": [
+        "^README.md$"
+      ],
+      "matchStrings": [
+        "`(?<depName>ghcr.io/pigeonf/containers/[^:]+):(?<currentValue>[^`]+)`"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
     }
   ]
 }
