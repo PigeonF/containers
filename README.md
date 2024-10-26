@@ -16,7 +16,7 @@ as well as for installation in other container images[^container-images-install]
   The easiest way to install an application in a container image without a package manager,
   is to copy the binary from a separate container image that already contains the binary.
 
-## Containers
+## Available Containers
 
 | Upstream Repository  | Container Image                                          | Architecture             |
 | -------------------- | -------------------------------------------------------- | ------------------------ |
