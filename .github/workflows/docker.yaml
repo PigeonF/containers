@@ -43,7 +43,7 @@ concurrency:
 jobs:
   containers:
     runs-on: ubuntu-24.04
-    name: ${{ matrix.name }} ${{ matrix.version}}
+    name: ${{ matrix.name }} ${{ matrix.version }}${{ github.event_name == 'workflow_dispatch' && inputs.container == matrix.name && '(Push)' || '' }}
     strategy:
       matrix:
         include:
@@ -96,7 +96,7 @@ jobs:
             org.opencontainers.image.revision=${{ matrix.revision }}
             ${{ matrix.annotations }}
           bake-target: _docker-metadata-action
-      - name: Build the ${{ matrix.name }} container
+      - name: ${{ github.event_name == 'workflow_dispatch' && inputs.container == matrix.name && 'Push' || 'Build' }} the ${{ matrix.name }} container
         uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5.10.0
         with:
           push: ${{ github.event_name == 'workflow_dispatch' && inputs.container == matrix.name }}
