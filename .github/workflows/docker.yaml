@@ -30,7 +30,6 @@ on:
 
 permissions:
   contents: read # for actions/checkout
-  packages: write # for docker/bake-action
 
 defaults:
   run:
@@ -67,6 +66,9 @@ jobs:
               org.opencontainers.image.description=Nitpicking commit history since beabf39
               org.opencontainers.image.source=https://github.com/crate-ci/committed
               org.opencontainers.image.licenses=Apache-2.0 OR MIT
+    permissions:
+      contents: read # for actions/checkout
+      packages: write # for docker/bake-action
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
