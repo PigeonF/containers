@@ -26,7 +26,7 @@ variable "TYPOS_VERSION" {
 
 target "_typos-version" {
   tags = [
-    TYPOS_VERSION
+    "pigeonf/containers/typos:${TYPOS_VERSION}"
   ]
 }
 
@@ -37,7 +37,7 @@ variable "COMMITTED_VERSION" {
 
 target "_committed-version" {
   tags = [
-    COMMITTED_VERSION
+    "pigeonf/containers/committed:${COMMITTED_VERSION}"
   ]
 }
 
