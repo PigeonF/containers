@@ -18,10 +18,10 @@ as well as for installation in other container images[^container-images-install]
 
 ## Available Containers
 
-| Upstream Repository  | Container Image                                          | Architecture             |
-| -------------------- | -------------------------------------------------------- | ------------------------ |
-| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.27.0`][typos]       | `amd64` [^crate-ci-arch] |
-| [crate-ci/committed] | [`ghcr.io/pigeonf/containers/committed:edge`][committed] | `amd64` [^crate-ci-arch] |
+| Upstream Repository  | Container Image                                           | Architecture             |
+| -------------------- | --------------------------------------------------------- | ------------------------ |
+| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.27.0`][typos]        | `amd64` [^crate-ci-arch] |
+| [crate-ci/committed] | [`ghcr.io/pigeonf/containers/committed:1.1.1`][committed] | `amd64` [^crate-ci-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
 [typos]: https://github.com/PigeonF/containers/pkgs/container/containers%2Ftypos
