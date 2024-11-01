@@ -55,11 +55,10 @@ jobs:
               org.opencontainers.image.description=Source code spell checker
               org.opencontainers.image.source=https://github.com/crate-ci/typos
               org.opencontainers.image.licenses=Apache-2.0 OR MIT
-          # TODO(PigeonF): Switch datasource, and version on next committed release
           - name: committed
-            # renovate: datasource=git-refs depName=crate-ci/committed
-            version: master
-            revision: ed53d014d490285fe091d0495af23fface6866aa
+            # renovate: datasource=github-releases depName=crate-ci/committed
+            version: v1.1.0
+            revision: 6e6c0dbe3858b6fca8c18e9147b15b15cb96a695
             edge: true
             image: ghcr.io/${{ github.repository_owner }}/containers/committed
             annotations: |
