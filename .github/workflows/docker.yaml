@@ -57,8 +57,8 @@ jobs:
               org.opencontainers.image.licenses=Apache-2.0 OR MIT
           - name: committed
             # renovate: datasource=github-releases depName=crate-ci/committed
-            version: v1.1.0
-            revision: 6e6c0dbe3858b6fca8c18e9147b15b15cb96a695
+            version: v1.1.1
+            revision: 608423fab72842b4be0be432ca0591337fc85698
             edge: true
             image: ghcr.io/${{ github.repository_owner }}/containers/committed
             annotations: |
