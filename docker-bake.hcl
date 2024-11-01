@@ -21,7 +21,7 @@ target "_common" {
 # NOTE(PigeonF): Use separate targets to inherit from, so that the _docker-metadata-action can
 # override the tags during CI.
 variable "TYPOS_VERSION" {
-  default = "v1.26.8" # renovate: datasource=github-releases depName=crate-ci/typos
+  default = "v1.27.0" # renovate: datasource=github-releases depName=crate-ci/typos
 }
 
 target "_typos-version" {
