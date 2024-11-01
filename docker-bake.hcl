@@ -31,7 +31,7 @@ target "_typos-version" {
 }
 
 variable "COMMITTED_VERSION" {
-  default = "v1.1.0" # renovate: datasource=github-releases depName=crate-ci/committed
+  default = "v1.1.1" # renovate: datasource=github-releases depName=crate-ci/committed
 }
 
 target "_committed-version" {
