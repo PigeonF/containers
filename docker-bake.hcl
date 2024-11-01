@@ -31,8 +31,7 @@ target "_typos-version" {
 }
 
 variable "COMMITTED_VERSION" {
-  # TODO(PigeonF): Switch datasource, and version on next committed release
-  default = "ed53d014d490285fe091d0495af23fface6866aa" # renovate: currentValue=master datasource=git-refs depName=crate-ci/committed
+  default = "v1.1.0" # renovate: datasource=github-releases depName=crate-ci/committed
 }
 
 target "_committed-version" {
@@ -57,8 +56,7 @@ target "typos" {
 
 target "committed" {
   inherits = ["_common", "_committed-version", "_docker-metadata-action"]
-  # TODO(PigeonF): Fix path once https://github.com/crate-ci/committed/pull/403 is merged
-  context = "https://github.com/PigeonF/committed.git#${COMMITTED_VERSION}"
+  context = "https://github.com/crate-ci/committed.git#${COMMITTED_VERSION}"
   # NOTE(PigeonF): As of v1.0.20, `committed` releases only x86_64 prebuilt binaries for linux (see
   # <https://github.com/crate-ci/committed/releases/tag/v1.0.20>), so we follow the same pattern here.
   platforms = [
