@@ -82,7 +82,6 @@ jobs:
         env:
           SOURCE_DATE_EPOCH: ${{ env.TIMESTAMP }}
         with:
-          push: ${{ inputs.push }}
           files: |
             ./docker-bake.hcl
             ./containers/${{ inputs.name }}.hcl
@@ -92,3 +91,4 @@ jobs:
           set: |
             *.cache-from=type=gha,scope=${{ inputs.name }}
             *.cache-to=type=gha,scope=${{ inputs.name }},mode=max
+            *.output=type=image,rewrite-timestamp=true,push=${{ inputs.push }}
