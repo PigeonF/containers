@@ -33,6 +33,8 @@ on:
       - containers/typos.hcl
       - docker-bake.hcl
 
+  workflow_dispatch:
+
 permissions:
   contents: read # for actions/checkout
   packages: write # for docker/bake-action
