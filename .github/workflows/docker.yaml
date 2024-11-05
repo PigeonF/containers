@@ -73,10 +73,15 @@ jobs:
             org.opencontainers.image.revision=${{ inputs.revision }}
             ${{ inputs.annotations }}
           bake-target: _docker-metadata-action
+      - name: Get git commit timestamp
+        env:
+          CONTAINER_FILE: ./containers/${{ inputs.name }}.hcl
+        run: echo "TIMESTAMP=$(git log -1 --pretty=%ct "$CONTAINER_FILE")" >> "$GITHUB_ENV"
       - name: ${{ inputs.push && 'Push' || 'Build' }} the ${{ inputs.name }} container
         uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5.10.0
+        env:
+          SOURCE_DATE_EPOCH: ${{ env.TIMESTAMP }}
         with:
-          push: ${{ inputs.push }}
           files: |
             ./docker-bake.hcl
             ./containers/${{ inputs.name }}.hcl
@@ -86,3 +91,4 @@ jobs:
           set: |
             *.cache-from=type=gha,scope=${{ inputs.name }}
             *.cache-to=type=gha,scope=${{ inputs.name }},mode=max
+            *.output=type=image,rewrite-timestamp=true,push=${{ inputs.push }}
