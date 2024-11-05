@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
+#
+# SPDX-License-Identifier: Unlicense
+---
+name: Build the committed container
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/docker.yaml
+      - .github/workflows/committed.yaml
+      - containers/committed.hcl
+      - docker-bake.hcl
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    paths:
+      - .github/workflows/docker.yaml
+      - .github/workflows/committed.yaml
+      - containers/committed.hcl
+      - docker-bake.hcl
+
+  merge_group:
+    paths:
+      - .github/workflows/docker.yaml
+      - .github/workflows/committed.yaml
+      - containers/committed.hcl
+      - docker-bake.hcl
+
+permissions:
+  contents: read # for actions/checkout
+  packages: write # for docker/bake-action
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-committed:
+    uses: ./.github/workflows/docker.yaml
+    with:
+      name: committed
+      # renovate: datasource=github-releases depName=crate-ci/committed
+      version: v1.1.1
+      revision: 608423fab72842b4be0be432ca0591337fc85698
+      annotations: |
+        org.opencontainers.image.description=Nitpicking commit history since beabf39
+        org.opencontainers.image.source=https://github.com/crate-ci/committed
+        org.opencontainers.image.licenses=Apache-2.0 OR MIT
+      push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}

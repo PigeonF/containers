@@ -33,7 +33,8 @@
       "customType": "regex",
       "description": "Update variables in docker bake files",
       "fileMatch": [
-        "^docker-bake\\.hcl$"
+        "^docker-bake\\.hcl$",
+        "^containers/.+\\.hcl$"
       ],
       "matchStrings": [
         "\\s*default\\s?=\\s?\"(?<currentValue>.+?)\" # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s",

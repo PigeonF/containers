@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
+#
+# SPDX-License-Identifier: Unlicense
+---
+name: Build the typos container
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/docker.yaml
+      - .github/workflows/typos.yaml
+      - containers/typos.hcl
+      - docker-bake.hcl
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    paths:
+      - .github/workflows/docker.yaml
+      - .github/workflows/typos.yaml
+      - containers/typos.hcl
+      - docker-bake.hcl
+
+  merge_group:
+    paths:
+      - .github/workflows/docker.yaml
+      - .github/workflows/typos.yaml
+      - containers/typos.hcl
+      - docker-bake.hcl
+
+permissions:
+  contents: read # for actions/checkout
+  packages: write # for docker/bake-action
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-typos:
+    uses: ./.github/workflows/docker.yaml
+    with:
+      name: typos
+      # renovate: datasource=github-releases depName=crate-ci/typos
+      version: v1.27.0
+      revision: d01f29c66d1bf1a08730750f61d86c210b0d039d
+      annotations: |
+        org.opencontainers.image.description=Source code spell checker
+        org.opencontainers.image.source=https://github.com/crate-ci/typos
+        org.opencontainers.image.licenses=Apache-2.0 OR MIT
+      push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}

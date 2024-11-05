@@ -5,28 +5,26 @@
 name: Build Container Images
 
 on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
-
-  merge_group:
-
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      container:
+      name:
         required: true
-        description: The container to push to the registry
-        type: choice
-        options:
-          - typos
-          - committed
+        type: string
+      version:
+        required: true
+        type: string
+      revision:
+        required: true
+        type: string
+      annotations:
+        required: true
+        type: string
+      push:
+        required: true
+        type: boolean
+      edge:
+        type: boolean
+        default: false
 
 permissions:
   contents: read # for actions/checkout
@@ -42,29 +40,7 @@ concurrency:
 jobs:
   containers:
     runs-on: ubuntu-24.04
-    name: ${{ matrix.name }} ${{ matrix.version }}${{ github.event_name == 'workflow_dispatch' && inputs.container == matrix.name && '(Push)' || '' }}
-    strategy:
-      matrix:
-        include:
-          - name: typos
-            # renovate: datasource=github-releases depName=crate-ci/typos
-            version: v1.27.0
-            revision: d01f29c66d1bf1a08730750f61d86c210b0d039d
-            image: ghcr.io/${{ github.repository_owner }}/containers/typos
-            annotations: |
-              org.opencontainers.image.description=Source code spell checker
-              org.opencontainers.image.source=https://github.com/crate-ci/typos
-              org.opencontainers.image.licenses=Apache-2.0 OR MIT
-          - name: committed
-            # renovate: datasource=github-releases depName=crate-ci/committed
-            version: v1.1.1
-            revision: 608423fab72842b4be0be432ca0591337fc85698
-            edge: true
-            image: ghcr.io/${{ github.repository_owner }}/containers/committed
-            annotations: |
-              org.opencontainers.image.description=Nitpicking commit history since beabf39
-              org.opencontainers.image.source=https://github.com/crate-ci/committed
-              org.opencontainers.image.licenses=Apache-2.0 OR MIT
+    name: ${{ inputs.name }} ${{ inputs.version }}${{ inputs.push && '(Push)' || '' }}
     permissions:
       contents: read # for actions/checkout
       packages: write # for docker/bake-action
@@ -84,28 +60,29 @@ jobs:
         env:
           DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
         with:
-          images: ${{ matrix.image }}
+          images: ghcr.io/${{ github.repository_owner }}/containers/${{ inputs.name }}
           tags: |
-            type=edge,enable=${{ matrix.edge || 'false' }}
+            type=edge,enable=${{ inputs.edge || 'false' }}
             type=ref,event=pr
-            type=semver,pattern={{major}},value=${{ matrix.version }},enable=${{ github.event_name == 'workflow_dispatch' && !startsWith(steps.bake.version, '0.') }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
-            type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{ matrix.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
-            type=semver,pattern={{version}},value=${{ matrix.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
+            type=semver,pattern={{major}},value=${{ inputs.version }},enable=${{ inputs.push && !startsWith(steps.bake.version, '0.') }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ inputs.version }},enable=${{ inputs.push }}
+            type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{ inputs.version }},enable=${{ inputs.push }}
+            type=semver,pattern={{version}},value=${{ inputs.version }},enable=${{ inputs.push }}
           annotations: |
-            org.opencontainers.image.title=${{ matrix.name }}
-            org.opencontainers.image.revision=${{ matrix.revision }}
-            ${{ matrix.annotations }}
+            org.opencontainers.image.title=${{ inputs.name }}
+            org.opencontainers.image.revision=${{ inputs.revision }}
+            ${{ inputs.annotations }}
           bake-target: _docker-metadata-action
-      - name: ${{ github.event_name == 'workflow_dispatch' && inputs.container == matrix.name && 'Push' || 'Build' }} the ${{ matrix.name }} container
+      - name: ${{ inputs.push && 'Push' || 'Build' }} the ${{ inputs.name }} container
         uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5.10.0
         with:
-          push: ${{ github.event_name == 'workflow_dispatch' && inputs.container == matrix.name }}
+          push: ${{ inputs.push }}
           files: |
             ./docker-bake.hcl
+            ./containers/${{ inputs.name }}.hcl
             ${{ steps.docker-metadata.outputs.bake-file-annotations }}
             ${{ steps.docker-metadata.outputs.bake-file-tags }}
-          targets: ${{ matrix.name }}
+          targets: ${{ inputs.name }}
           set: |
-            *.cache-from=type=gha,scope=${{ matrix.name }}
-            *.cache-to=type=gha,scope=${{ matrix.name }},mode=max
+            *.cache-from=type=gha,scope=${{ inputs.name }}
+            *.cache-to=type=gha,scope=${{ inputs.name }},mode=max
