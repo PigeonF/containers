@@ -40,7 +40,7 @@ concurrency:
 jobs:
   containers:
     runs-on: ubuntu-24.04
-    name: ${{ inputs.name }} ${{ inputs.version }}${{ inputs.push && '(Push)' || '' }}
+    name: ${{ inputs.name }} ${{ inputs.version }}
     permissions:
       contents: read # for actions/checkout
       packages: write # for docker/bake-action
