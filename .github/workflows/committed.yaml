@@ -35,10 +35,6 @@ on:
 
   workflow_dispatch:
 
-permissions:
-  contents: read # for actions/checkout
-  packages: write # for docker/bake-action
-
 defaults:
   run:
     shell: bash
@@ -56,3 +52,6 @@ jobs:
         org.opencontainers.image.source=https://github.com/crate-ci/committed
         org.opencontainers.image.licenses=Apache-2.0 OR MIT
       push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: read # for actions/checkout
+      packages: write # for docker/bake-action
