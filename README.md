@@ -37,6 +37,20 @@ as well as for installation in other container images[^container-images-install]
 [open a pull request]: https://github.com/PigeonF/containers/pulls
 [an issue]: https://github.com/PigeonF/containers/issues
 
+## Building
+
+To build a container you have to call `docker bake` with both [`docker-bake.hcl`],
+and the [container hcl file].
+For example,
+to build the `typos` container
+
+[`docker-bake.hcl`]: ./docker-bake.hcl
+[container hcl file]: ./containers/
+
+```console
+docker buildx bake -f docker-bake.hcl -f containers/typos.hcl
+```
+
 ## License
 
 _This project is [REUSE] compliant_.
