@@ -45,8 +45,8 @@ jobs:
     with:
       name: typos
       # renovate: datasource=github-releases depName=crate-ci/typos
-      version: v1.27.0
-      revision: d01f29c66d1bf1a08730750f61d86c210b0d039d
+      version: v1.27.1
+      revision: 51e9d58a14d6c43eedf9356ab5b30ef4715d14c0
       annotations: |
         org.opencontainers.image.description=Source code spell checker
         org.opencontainers.image.source=https://github.com/crate-ci/typos
