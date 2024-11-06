@@ -7,7 +7,7 @@ group "default" {
 }
 
 variable "TYPOS_VERSION" {
-  default = "v1.27.0" # renovate: datasource=github-releases depName=crate-ci/typos
+  default = "v1.27.1" # renovate: datasource=github-releases depName=crate-ci/typos
 }
 
 target "_typos-version" {
