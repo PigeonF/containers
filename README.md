@@ -20,7 +20,7 @@ as well as for installation in other container images[^container-images-install]
 
 | Upstream Repository  | Container Image                                           | Architecture             |
 | -------------------- | --------------------------------------------------------- | ------------------------ |
-| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.27.3`][typos]        | `amd64` [^crate-ci-arch] |
+| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.28.0`][typos]        | `amd64` [^crate-ci-arch] |
 | [crate-ci/committed] | [`ghcr.io/pigeonf/containers/committed:1.1.1`][committed] | `amd64` [^crate-ci-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
