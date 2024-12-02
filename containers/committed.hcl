@@ -7,7 +7,7 @@ group "default" {
 }
 
 variable "COMMITTED_VERSION" {
-  default = "v1.1.1" # renovate: datasource=github-releases depName=crate-ci/committed
+  default = "v1.1.2" # renovate: datasource=github-releases depName=crate-ci/committed
 }
 
 target "_committed-version" {
