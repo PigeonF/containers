@@ -6,7 +6,8 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # containers
 
-This repository provides [container image] builds of repositories that do not provide their own.
+This repository provides [container image] builds of repositories that do not provide their own,
+or slightly adjusted upstream images.
 The primary purpose is for use in [GitLab CI/CD],
 as well as for installation in other container images[^container-images-install].
 
@@ -18,10 +19,11 @@ as well as for installation in other container images[^container-images-install]
 
 ## Available Containers
 
-| Upstream Repository  | Container Image                                           | Architecture             |
-| -------------------- | --------------------------------------------------------- | ------------------------ |
-| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.28.2`][typos]        | `amd64` [^crate-ci-arch] |
-| [crate-ci/committed] | [`ghcr.io/pigeonf/containers/committed:1.1.2`][committed] | `amd64` [^crate-ci-arch] |
+| Upstream Repository  | Container Image                                           | Architecture                                                                |
+| -------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.28.2`][typos]        | `amd64` [^crate-ci-arch]                                                    |
+| [crate-ci/committed] | [`ghcr.io/pigeonf/containers/committed:1.1.2`][committed] | `amd64` [^crate-ci-arch]                                                    |
+| [moby/buildkit]      | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`,  `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
 [typos]: https://github.com/PigeonF/containers/pkgs/container/containers%2Ftypos
@@ -33,6 +35,9 @@ as well as for installation in other container images[^container-images-install]
   If you have a need for additional architectures,
   feel free to [open a pull request],
   or [an issue].
+
+[^buildkit-arch]: &ZeroWidthSpace;
+  The same architectures as the upstream image.
 
 [open a pull request]: https://github.com/PigeonF/containers/pulls
 [an issue]: https://github.com/PigeonF/containers/issues
