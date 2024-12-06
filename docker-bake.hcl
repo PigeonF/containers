@@ -5,6 +5,7 @@
 target "_docker-metadata-action" {}
 
 target "_common" {
+  output = ["type=image,rewrite-timestamp=true,oci-mediatypes=true"]
   args = {
     BUILDKIT_MULTI_PLATFORM = true
   }
