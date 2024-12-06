@@ -6,16 +6,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # containers
 
-This repository provides [container image] builds of repositories that do not provide their own,
-or slightly adjusted upstream images.
-The primary purpose is for use in [GitLab CI/CD],
-as well as for installation in other container images[^container-images-install].
+This repository provides [container image](https://opencontainers.org/) builds of repositories that do not provide their own, or slightly adjusted upstream images.
+The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html), as well as for installation in other container images[^container-images-install].
 
-[container image]: https://opencontainers.org/
-[GitLab CI/CD]: https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
-[^container-images-install]: &ZeroWidthSpace;
-  The easiest way to install an application in a container image without a package manager,
-  is to copy the binary from a separate container image that already contains the binary.
+[^container-images-install]: The easiest way to install an application in a container image without a package manager, is to copy the binary from a separate container image that already contains the binary.
 
 ## Available Containers
 
@@ -32,38 +26,24 @@ as well as for installation in other container images[^container-images-install]
 [moby/buildkit]: https://github.com/moby/buildkit
 [buildkit]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fbuildkit
 
-[^buildkit]: &ZeroWidthSpace;
-  This is a copy of the [upstream buildkit container],
-  but with an `EXPOSE` instruction so that the buildkit container can be used as a [GitLab CI/CD service].
+[^buildkit]: This is a copy of the [upstream buildkit container](https://hub.docker.com/r/moby/buildkit).
+  The only difference is an added `EXPOSE` instruction so that the buildkit container can be used as a [GitLab CI/CD service](https://docs.gitlab.com/ee/ci/services/).
 
-[upstream buildkit container]: https://hub.docker.com/r/moby/buildkit
-[GitLab CI/CD service]: https://docs.gitlab.com/ee/ci/services/
+[^buildkit-arch]: The same architectures as the upstream image.
 
-[^crate-ci-arch]: &ZeroWidthSpace;
-  This corresponds to the same architectures as the upstream prebuilt binaries for linux.
-  If you have a need for additional architectures,
-  feel free to [open a pull request],
-  or [an issue].
-
-[^buildkit-arch]: &ZeroWidthSpace;
-  The same architectures as the upstream image.
-
-[open a pull request]: https://github.com/PigeonF/containers/pulls
-[an issue]: https://github.com/PigeonF/containers/issues
+[^crate-ci-arch]: This corresponds to the same architectures as the upstream prebuilt binaries for linux.
+  If you have a need for additional architectures, feel free to [open a pull request](https://github.com/PigeonF/containers/pulls), or [an issue](https://github.com/PigeonF/containers/issues).
 
 ## Building
 
-To build a container you have to call `docker bake` with both [`docker-bake.hcl`],
-and the [container hcl file].
-For example,
-to build the `typos` container
-
-[`docker-bake.hcl`]: ./docker-bake.hcl
-[container hcl file]: ./containers/
+To build a container you have to call `docker bake` with both [`docker-bake.hcl`](./docker-bake.hcl), and the [container hcl file](./containers/).
+For example, to build the `typos` container
 
 ```console
 docker buildx bake -f docker-bake.hcl -f containers/typos.hcl
 ```
+
+For more detailed instructions, refer to the [developer documentation](./docs/developing.md).
 
 ## License
 
@@ -73,9 +53,7 @@ _This project is [REUSE] compliant_.
 
 Different parts of the work fall under different licenses[^license-summary]
 
-[^license-summary]: &ZeroWidthSpace;
-  The summary is for you to get a rough overview,
-  not to give a comprehensive listing.
+[^license-summary]: The summary is for you to get a rough overview, not to give a comprehensive listing.
 
 - Source code is dual licensed under `0BSD`.
 - Documentation is licensed under `CC-BY-4.0`.

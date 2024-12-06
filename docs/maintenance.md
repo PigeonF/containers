@@ -10,9 +10,7 @@ This guide is intended for maintainers of the project.
 
 ## Releasing a new version
 
-New versions of the containers are released automatically by the [CI/CD configuration] changes are merged into the `main` branch.
-
-[CI/CD configuration]: ../.github/workflows/
+New versions of the containers are released automatically by the [CI/CD configuration](../.github/workflows/) changes are merged into the `main` branch.
 
 ## CI/CD Secrets
 
@@ -26,6 +24,4 @@ The repository has bot account members to automate some tasks.
 
 This bot automatically updates dependencies.
 In this case this means updating the container dependencies to their latest released versions.
-The bot is configured via the [`renovate.json5`] file.
-
-[`renovate.json5`]: ../renovate.json5
+The bot is configured via the [`renovate.json5`](../renovate.json5) file.
