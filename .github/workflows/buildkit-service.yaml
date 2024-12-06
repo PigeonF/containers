@@ -1,0 +1,90 @@
+# SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
+#
+# SPDX-License-Identifier: 0BSD
+---
+name: Build the buildkit container
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/buildkit-service.yaml
+      - containers/buildkit-service.hcl
+      - docker-bake.hcl
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    paths:
+      - .github/workflows/buildkit-service.yaml
+      - containers/buildkit-service.hcl
+      - docker-bake.hcl
+
+  merge_group:
+    paths:
+      - .github/workflows/buildkit-service.yaml
+      - containers/buildkit-service.hcl
+      - docker-bake.hcl
+
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.container }}
+  cancel-in-progress: true
+
+jobs:
+  build-buildkit:
+    runs-on: ubuntu-24.04
+    name: buildkit-service images
+    permissions:
+      contents: read # for actions/checkout
+      packages: write # for docker/bake-action
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # Required to get the correct file modification date with `git log`
+          fetch-depth: "0"
+          persist-credentials: false
+      - uses: docker/setup-buildx-action@c47758b77c9736f4b2ef4073d4d51994fabfe349 # v3.7.1
+      - uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate docker metadata
+        id: docker-metadata
+        uses: docker/metadata-action@369eb591f429131d6889c46b94e711f089e6ca96 # v5.6.1
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+        with:
+          annotations: |
+            org.opencontainers.image.title=buildkit
+            org.opencontainers.image.description=concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit
+            org.opencontainers.image.source=https://github.com/moby/buildkit
+            org.opencontainers.image.licenses=Apache-2.0
+          bake-target: _docker-metadata-action
+      - name: Set SOURCE_DATE_EPOCH to git timestamp
+        run: |
+          echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct ./containers/buildkit-service.hcl)" >> "$GITHUB_ENV"
+      - name: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'Push' || 'Build' }} the buildkit container
+        uses: docker/bake-action@3fc70e1131fee40a422dd8dd0ff22014ae20a1f3 # v5.11.0
+        env:
+          IMAGE: ghcr.io/${{ github.repository_owner }}/containers/buildkit
+        with:
+          files: |
+            ./docker-bake.hcl
+            ./containers/buildkit-service.hcl
+            ${{ steps.docker-metadata.outputs.bake-file-annotations }}
+          targets: buildkit-service
+          set: |
+            *.cache-from=type=gha,scope=buildkit
+            *.cache-to=type=gha,scope=buildkit,mode=max
+            *.output=type=image,rewrite-timestamp=true,oci-mediatypes=true,push=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}

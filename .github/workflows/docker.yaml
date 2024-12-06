@@ -91,4 +91,4 @@ jobs:
           set: |
             *.cache-from=type=gha,scope=${{ inputs.name }}
             *.cache-to=type=gha,scope=${{ inputs.name }},mode=max
-            *.output=type=image,rewrite-timestamp=true,push=${{ inputs.push }}
+            *.output=type=image,rewrite-timestamp=true,oci-mediatypes=true,push=${{ inputs.push }}
