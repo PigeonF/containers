@@ -38,7 +38,8 @@
       ],
       "matchStrings": [
         "\\s*default\\s?=\\s?\"(?<currentValue>.+?)\" # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s",
-        "\\s*default\\s?=\\s?\"(?<currentDigest>.+?)\" # renovate: currentValue=(?<currentValue>.+?) datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s"
+        "\\s*default\\s?=\\s?\"(?<currentDigest>.+?)\" # renovate: currentValue=(?<currentValue>.+?) datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s",
+        "# renovate: depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+tag\\s*=\\s*[\"'](?<currentValue>.+?)[\"']\\s(?:\\s*digest\\s*=\\s*[\"'](?<currentDigest>.+?)[\"']\\s)?"
       ]
     },
     {

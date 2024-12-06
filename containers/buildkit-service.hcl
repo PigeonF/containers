@@ -29,26 +29,32 @@ target "buildkit-service" {
   matrix = {
     item = [
       {
+        # renovate: depName=docker.io/moby/buildkit
         tag = "buildx-stable-1"
         digest = "sha256:58e6d150a3c5a4b92e99ea8df2cbe976ad6d2ae5beab39214e84fada05b059d5"
       },
       {
+        # renovate: depName=docker.io/moby/buildkit
         tag = "buildx-stable-1-rootless"
         digest = "sha256:8e70f1e38c50ec5ac8e8fb861c837e9e7b2350ccb90b10e429733f8bda3b7809"
       },
       {
+        # renovate: depName=docker.io/moby/buildkit
         tag = "v0.18.1"
         digest = "sha256:58e6d150a3c5a4b92e99ea8df2cbe976ad6d2ae5beab39214e84fada05b059d5"
       },
       {
+        # renovate: depName=docker.io/moby/buildkit
         tag = "v0.18.1-rootless"
         digest = "sha256:8e70f1e38c50ec5ac8e8fb861c837e9e7b2350ccb90b10e429733f8bda3b7809"
       },
       {
+        # renovate: depName=docker.io/moby/buildkit
         tag = "latest"
         digest = "sha256:58e6d150a3c5a4b92e99ea8df2cbe976ad6d2ae5beab39214e84fada05b059d5"
       },
       {
+        # renovate: depName=docker.io/moby/buildkit
         tag = "rootless"
         digest = "sha256:8e70f1e38c50ec5ac8e8fb861c837e9e7b2350ccb90b10e429733f8bda3b7809"
       },
