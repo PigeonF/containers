@@ -63,9 +63,9 @@ Different parts of the work fall under different licenses[^license-summary]
   The summary is for you to get a rough overview,
   not to give a comprehensive listing.
 
-- Source code is dual licensed under `Unlicense`.
+- Source code is dual licensed under `0BSD`.
 - Documentation is licensed under `CC-BY-4.0`.
-- Configuration files are licensed under `CC0-1.0`.
+- Configuration files are licensed under `0BSD`.
 
 Refer the files themselves for the licensing information of individual files.
 Copies of the license text are available in the [`LICENSES/`](./LICENSES/) folder.

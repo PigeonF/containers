@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2024 Jonas Fierlings <fnoegip@gmail.com>
 #
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: 0BSD
 ---
 name: Build Container Images
 
