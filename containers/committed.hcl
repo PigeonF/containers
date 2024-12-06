@@ -6,13 +6,21 @@ group "default" {
   targets = ["committed"]
 }
 
+variable "IMAGE" {
+  default = "pigeonf/containers/committed"
+}
+
 variable "COMMITTED_VERSION" {
   default = "v1.1.2" # renovate: datasource=github-releases depName=crate-ci/committed
 }
 
+# Split into its own target, so that the docker metadata action can override the tags.
+#
+# This is added as a convenience for building the container locally (the actual version definition
+# is in `.github/workflows/committed.yaml`).
 target "_committed-version" {
   tags = [
-    "pigeonf/containers/committed:${COMMITTED_VERSION}"
+    "${IMAGE}:${COMMITTED_VERSION}"
   ]
 }
 

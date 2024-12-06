@@ -19,16 +19,25 @@ as well as for installation in other container images[^container-images-install]
 
 ## Available Containers
 
-| Upstream Repository  | Container Image                                           | Architecture                                                                |
-| -------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [crate-ci/typos]     | [`ghcr.io/pigeonf/containers/typos:1.28.2`][typos]        | `amd64` [^crate-ci-arch]                                                    |
-| [crate-ci/committed] | [`ghcr.io/pigeonf/containers/committed:1.1.2`][committed] | `amd64` [^crate-ci-arch]                                                    |
-| [moby/buildkit]      | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`,  `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
+| Upstream Repository         | Container Image                                           | Architecture                                                                |
+| --------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.28.2`][typos]        | `amd64` [^crate-ci-arch]                                                    |
+| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.2`][committed] | `amd64` [^crate-ci-arch]                                                    |
+| [moby/buildkit] [^buildkit] | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`,  `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
 [typos]: https://github.com/PigeonF/containers/pkgs/container/containers%2Ftypos
 [crate-ci/committed]: https://github.com/crate-ci/committed
 [committed]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fcommitted
+[moby/buildkit]: https://github.com/moby/buildkit
+[buildkit]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fbuildkit
+
+[^buildkit]: &ZeroWidthSpace;
+  This is a copy of the [upstream buildkit container],
+  but with an `EXPOSE` instruction so that the buildkit container can be used as a [GitLab CI/CD service].
+
+[upstream buildkit container]: https://hub.docker.com/r/moby/buildkit
+[GitLab CI/CD service]: https://docs.gitlab.com/ee/ci/services/
 
 [^crate-ci-arch]: &ZeroWidthSpace;
   This corresponds to the same architectures as the upstream prebuilt binaries for linux.

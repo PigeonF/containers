@@ -22,7 +22,6 @@ target "buildkit-service" {
     EXPOSE ${BUILDKIT_PORT}
     CMD ["--oci-worker-no-process-sandbox", "--addr", "tcp://:${BUILDKIT_PORT}"]
   EOT
-  output = ["type=image,rewrite-timestamp=true,oci-mediatypes=true"]
   tags = [
     "${lower(IMAGE)}:${item.tag}"
   ]
