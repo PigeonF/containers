@@ -59,7 +59,7 @@
         "^README.md$"
       ],
       "matchStrings": [
-        "`(?<depName>ghcr.io/pigeonf/containers/[^:]+):(?<currentValue>[^`]+)`"
+        "`(?<depName>ghcr.io/pigeonf/containers/[^\\s]+?):(?<currentValue>[^\\s]+?)`"
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
