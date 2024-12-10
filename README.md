@@ -13,11 +13,11 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 
 ## Available Containers
 
-| Upstream Repository         | Container Image                                           | Architecture                                                                |
-| --------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.28.2`][typos]        | `amd64` [^crate-ci-arch]                                                    |
-| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.2`][committed] | `amd64` [^crate-ci-arch]                                                    |
-| [moby/buildkit] [^buildkit] | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`,  `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
+| Upstream Repository         | Container Image                                           | Architecture                                                               |
+| --------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.28.2`][typos]        | `amd64` [^crate-ci-arch]                                                   |
+| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.2`][committed] | `amd64` [^crate-ci-arch]                                                   |
+| [moby/buildkit] [^buildkit] | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`, `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
 [typos]: https://github.com/PigeonF/containers/pkgs/container/containers%2Ftypos
