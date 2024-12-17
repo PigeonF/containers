@@ -39,13 +39,13 @@ target "buildkit-service" {
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
-        tag = "v0.18.1"
-        digest = "sha256:58e6d150a3c5a4b92e99ea8df2cbe976ad6d2ae5beab39214e84fada05b059d5"
+        tag = "v0.18.2"
+        digest = "sha256:86c0ad9d1137c186e9d455912167df20e530bdf7f7c19de802e892bb8ca16552"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
-        tag = "v0.18.1-rootless"
-        digest = "sha256:8e70f1e38c50ec5ac8e8fb861c837e9e7b2350ccb90b10e429733f8bda3b7809"
+        tag = "v0.18.2-rootless"
+        digest = "sha256:95da42806e4e3e3d3cb72f84286446ab5aa60e9c69c521e8b4c72d0c283b4593"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
