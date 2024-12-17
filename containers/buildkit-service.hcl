@@ -55,7 +55,7 @@ target "buildkit-service" {
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "rootless"
-        digest = "sha256:8e70f1e38c50ec5ac8e8fb861c837e9e7b2350ccb90b10e429733f8bda3b7809"
+        digest = "sha256:95da42806e4e3e3d3cb72f84286446ab5aa60e9c69c521e8b4c72d0c283b4593"
       },
     ]
   }
