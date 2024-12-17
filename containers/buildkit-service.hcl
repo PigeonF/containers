@@ -50,7 +50,7 @@ target "buildkit-service" {
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "latest"
-        digest = "sha256:58e6d150a3c5a4b92e99ea8df2cbe976ad6d2ae5beab39214e84fada05b059d5"
+        digest = "sha256:86c0ad9d1137c186e9d455912167df20e530bdf7f7c19de802e892bb8ca16552"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
