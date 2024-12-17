@@ -26,6 +26,24 @@
         "ghcr.io/pigeonf/containers/*"
       ],
       "pinDigests": false
+    },
+    {
+      "groupName": "Readme references",
+      "matchFileNames": [
+        "README.md"
+      ]
+    },
+    {
+      "groupName": "buildkit images",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "docker.io/moby/buildkit"
+      ],
+      "matchFileNames": [
+        "**/containers/buildkit-service.hcl"
+      ]
     }
   ],
   "customManagers": [
