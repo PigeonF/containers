@@ -11,7 +11,7 @@ variable "IMAGE" {
 }
 
 variable "TYPOS_VERSION" {
-  default = "v1.29.1" # renovate: datasource=github-releases depName=crate-ci/typos
+  default = "v1.29.3" # renovate: datasource=github-releases depName=crate-ci/typos
 }
 
 # Split into its own target, so that the docker metadata action can override the tags.
