@@ -75,7 +75,7 @@ jobs:
         run: |
           echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct ./containers/buildkit-service.hcl)" >> "$GITHUB_ENV"
       - name: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'Push' || 'Build' }} the buildkit container
-        uses: docker/bake-action@5a1b7c978676087cf56d912184870c973a202fe7 # v6.1.0
+        uses: docker/bake-action@5dd4f8e2d6e60a471ecfe0a66e429bae1506b899 # v6.1.1
         env:
           IMAGE: ghcr.io/${{ github.repository_owner }}/containers/buildkit
         with:
