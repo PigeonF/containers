@@ -80,7 +80,7 @@ jobs:
           CONTAINER_FILE: ./containers/${{ inputs.name }}.hcl
         run: echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct "$CONTAINER_FILE")" >> "$GITHUB_ENV"
       - name: ${{ inputs.push && 'Push' || 'Build' }} the ${{ inputs.name }} container
-        uses: docker/bake-action@5dd4f8e2d6e60a471ecfe0a66e429bae1506b899 # v6.1.1
+        uses: docker/bake-action@60f5d53310314dbf8c33f0c8a01042536f2f6c36 # v6.2.0
         with:
           source: .
           files: |
