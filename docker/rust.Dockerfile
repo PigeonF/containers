@@ -132,12 +132,12 @@ COPY --from=artifacts-targetos /out/ /
 # Container Images
 # =================================================================================================
 
-FROM mcr.microsoft.com/windows/nanoserver:ltsc2025 AS windows
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:d584aae93e84d61c8a3280ed3a5d5a6d397c0214a2902acadb8b17b0b00c70e8 AS windows
 ARG CRATE
 COPY --from=artifacts ["/*-pc-windows-msvc/", "Program Files/${CRATE}/"]
 ENV PATH="c:\\Program Files\\${CRATE};c:\\Windows\\System32;c:\\Windows"
 
-FROM docker.io/library/debian:stable-slim AS linux
+FROM docker.io/library/debian:stable-slim@sha256:b5ace515e78743215a1b101a6f17e59ed74b17132139ca3af3c37e605205e973 AS linux
 COPY --from=artifacts --chown=0:0 --chmod=755 /*-unknown-linux-gnu/* /usr/local/bin/
 
 FROM ${TARGETOS}
