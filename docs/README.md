@@ -17,14 +17,9 @@ As some projects do not provide ready container images, or provides container im
 
 [GitLab CI/CD]: https://docs.gitlab.com/ee/ci/
 
-## Project Design
-
-To ease maintenance of the repository, the container are images built from upstream [Dockerfile](https://docs.docker.com/reference/dockerfile/) definitions where possible.
-This is possible by using the upstream repositories as the [docker build context](https://docs.docker.com/build/concepts/context/#remote-context).
-
 ## Repository Layout
 
-Two central parts of the repository are the [bake files](../containers/) and the [docker CI workflow](../.github/workflows/docker.yaml).
+Two central parts of the repository are the [bake file](../docker-bake.hcl) and the [docker CI workflow](../.github/workflows/docker.yaml).
 The former defines which containers to build (and how), whereas the latter is used for publishing the containers to [the project's container registry][container registry].
 
 [container registry]: https://github.com/PigeonF?tab=packages&repo_name=containers
@@ -34,16 +29,11 @@ The former defines which containers to build (and how), whereas the latter is us
   The CI/CD configuration builds the containers during merge requests and merges to the `main` branch.
   When a changed container configuration is merged into `main`, the CI/CD configuration will automatically build and push the new container image to the [container registry].
 
-- [**The `docker-bake.hcl` file**](../docker-bake.hcl) contains common configuration that is shared between all container definitions.
+- [**The `docker-bake.hcl` file**](../docker-bake.hcl) contains definitions on how to build the containers using `docker buildx bake`.
 
-- [**The `containers/` folder**](../containers/) contains definitions on how to build the containers using `docker buildx bake`.
+- [**The `docker/` folder**](../docker/) contains dockerfiles that are shared between multiple containers.
 
-  - [**The `buildkit` container**](../containers/buildkit-service.hcl) modifies the [official container](hub.docker.com/r/moby/buildkit/) for <https://github.com/moby/buildkit>.
-    The goals is to ready the image for use as a [GitLab CI/CD service](https://docs.gitlab.com/ee/ci/services/).
-
-  - [**The `committed` container**](../containers/committed.hcl) builds the <https://github.com/crate-ci/committed> git commit linter.
-
-  - [**The `typos` container**](../containers/typos.hcl) builds the <https://github.com/crate-ci/typos> spell checker.
+  - [**The `rust.Dockerfile`**](../docker/rust.Dockerfile) is used to build glibc and msvc binaries from a rust project.
 
 - [**The `docs/` folder**](../docs/) contains project documentation.
 

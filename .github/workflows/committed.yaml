@@ -9,28 +9,24 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/docker.yaml
+      # Only run on main when the workflow definition changes (which indicates a version bump from the upstream project)
+      # - .github/workflows/docker.yaml
       - .github/workflows/committed.yaml
-      - containers/committed.hcl
-      - docker-bake.hcl
+      # - docker/rust.Dockerfile
+      # - docker-bake.hcl
 
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
     paths:
       - .github/workflows/docker.yaml
       - .github/workflows/committed.yaml
-      - containers/committed.hcl
+      - docker/rust.Dockerfile
       - docker-bake.hcl
 
   merge_group:
     paths:
       - .github/workflows/docker.yaml
       - .github/workflows/committed.yaml
-      - containers/committed.hcl
+      - docker/rust.Dockerfile
       - docker-bake.hcl
 
   workflow_dispatch:
@@ -47,10 +43,8 @@ jobs:
       # renovate: datasource=github-releases depName=crate-ci/committed
       version: v1.1.5
       revision: ebdd4381247845abba019a2db29fe1c24662e4f1
-      annotations: |
-        org.opencontainers.image.description=Nitpicking commit history since beabf39
-        org.opencontainers.image.source=https://github.com/crate-ci/committed
-        org.opencontainers.image.licenses=Apache-2.0 OR MIT
+      upstream: crate-ci/committed
+      version_var: COMMITTED_TAG
       push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     permissions:
       contents: read # for actions/checkout
