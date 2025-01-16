@@ -44,7 +44,7 @@ jobs:
       version: v1.29.4
       revision: 685eb3d55be2f85191e8c84acb9f44d7756f84ab
       upstream: crate-ci/typos
-      version_var: COMMITTED_TAG
+      version_var: TYPOS_TAG
       push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     permissions:
       contents: read # for actions/checkout
