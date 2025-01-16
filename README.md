@@ -15,8 +15,8 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 
 | Upstream Repository         | Container Image                                           | Architecture                                                               |
 | --------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.29.4`][typos]        | `amd64` [^crate-ci-arch]                                                   |
-| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.5`][committed] | `amd64` [^crate-ci-arch]                                                   |
+| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.29.4`][typos]        | `amd64`, `arm64` [^rust-target]                                            |
+| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.5`][committed] | `amd64`, `arm64` [^rust-target]                                            |
 | [moby/buildkit] [^buildkit] | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`, `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
@@ -26,21 +26,21 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 [moby/buildkit]: https://github.com/moby/buildkit
 [buildkit]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fbuildkit
 
+[^rust-target]: The images are also built for `windows/arm64`, but are available under a separate tag (`<version>-ltsc`).
+  See the package registry for details.
+
 [^buildkit]: This is a copy of the [upstream buildkit container](https://hub.docker.com/r/moby/buildkit).
   The only difference is an added `EXPOSE` instruction so that the buildkit container can be used as a [GitLab CI/CD service](https://docs.gitlab.com/ee/ci/services/).
 
 [^buildkit-arch]: The same architectures as the upstream image.
 
-[^crate-ci-arch]: This corresponds to the same architectures as the upstream prebuilt binaries for linux.
-  If you have a need for additional architectures, feel free to [open a pull request](https://github.com/PigeonF/containers/pulls), or [an issue](https://github.com/PigeonF/containers/issues).
-
 ## Building
 
-To build a container you have to call `docker bake` with both [`docker-bake.hcl`](./docker-bake.hcl), and the [container hcl file](./containers/).
+To build a container you have to call `docker bake` with the name of the container.
 For example, to build the `typos` container
 
 ```console
-docker buildx bake -f docker-bake.hcl -f containers/typos.hcl
+docker buildx bake typos
 ```
 
 For more detailed instructions, refer to the [developer documentation](./docs/developing.md).

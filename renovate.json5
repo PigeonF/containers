@@ -11,6 +11,7 @@
     ":rebaseStalePrs",
     ":semanticCommits",
     ":semanticCommitScope(deps)",
+    "customManagers:dockerfileVersions",
     "helpers:pinGitHubActionDigests"
   ],
   "assignees": [
@@ -40,9 +41,6 @@
       ],
       "matchPackageNames": [
         "docker.io/moby/buildkit"
-      ],
-      "matchFileNames": [
-        "**/containers/buildkit-service.hcl"
       ]
     }
   ],
@@ -51,11 +49,11 @@
       "customType": "regex",
       "description": "Update variables in docker bake files",
       "fileMatch": [
-        "^docker-bake\\.hcl$",
-        "^containers/.+\\.hcl$"
+        "^docker-bake\\.hcl$"
       ],
+      "datasourceTemplate": "docker",
       "matchStrings": [
-        "\\s*default\\s?=\\s?\"(?<currentValue>.+?)\" # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s",
+        "# renovate:(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+name\\s*=\\s*[\"'](?<depName>.+?)[\"']\\s+tag\\s*=\\s*[\"'](?<currentValue>.+?)[\"']\\s+digest\\s*=\\s*[\"'](?<currentDigest>.*?)[\"']\\s",
         "\\s*default\\s?=\\s?\"(?<currentDigest>.+?)\" # renovate: currentValue=(?<currentValue>.+?) datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s",
         "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+tag\\s*=\\s*[\"'](?<currentValue>.+?)[\"']\\s(?:\\s*digest\\s*=\\s*[\"'](?<currentDigest>.+?)[\"']\\s)?"
       ]
