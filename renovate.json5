@@ -42,6 +42,18 @@
       "matchPackageNames": [
         "docker.io/moby/buildkit"
       ]
+    },
+    {
+      // Digests for base images are deliberately not pinned in Dockerfile (pinning happens in
+      // docker-bake.hcl).
+      "description": "Do not pin in rust.Dockerfile",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchFileNames": [
+        "docker/rust.Dockerfile"
+      ],
+      "pinDigests": false
     }
   ],
   "customManagers": [
