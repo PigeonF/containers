@@ -28,7 +28,6 @@ FROM rust AS builder-base
 ARG CARGO_AUDITABLE_VERSION=v0.6.6
 # Install cargo auditable (can switch to `apt install` once debian trixie becomes stable)
 RUN curl --proto '=https' --tlsv1.2 -LsSf https://github.com/rust-secure-code/cargo-auditable/releases/download/${CARGO_AUDITABLE_VERSION}/cargo-auditable-installer.sh | sh
-ENV PATH=/usr/local/cargo/bin:/usr/lib/llvm-16/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ARG TARGETARCH
 ENV CARGO_TARGETARCH=${TARGETARCH}
 ENV CARGO_TARGETARCH=${CARGO_TARGETARCH/amd64/x86_64}
