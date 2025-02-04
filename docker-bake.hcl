@@ -74,7 +74,7 @@ variable "_base-images" {
       # renovate: versioning=debian
       name = "docker.io/library/debian"
       tag = "bookworm-slim"
-      digest = "sha256:f70dc8d6a8b6a06824c92471a1a258030836b26b043881358b967bf73de7c5ab"
+      digest = "sha256:40b107342c492725bc7aacbe93a49945445191ae364184a6d24fedb28172f6f7"
       suffixes = ["", "bookworm"]
       platforms = ["linux/amd64", "linux/arm64"]
       rustflags = "-C target-feature=-crt-static"
