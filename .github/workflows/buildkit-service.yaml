@@ -51,7 +51,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'Push' || 'Build' }} the buildkit container
-        uses: docker/bake-action@7bff531c65a5cda33e52e43950a795b91d450f63 # v6.3.0
+        uses: docker/bake-action@4f08b22a19b3133912e9acbf7da9bfa25184a173 # v6.4.0
         env:
           IMAGE: ghcr.io/${{ github.repository_owner }}/containers/buildkit
           SOURCE_DATE_EPOCH: "0"
