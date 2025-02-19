@@ -41,8 +41,8 @@ jobs:
     with:
       name: typos
       # renovate: datasource=github-releases depName=crate-ci/typos
-      version: v1.29.7
-      revision: 51f257b946f503b768e522781f56e9b7b5570d48
+      version: v1.29.8
+      revision: fb78b722e9ebbabe8f4056509311c685620cd48e
       upstream: crate-ci/typos
       version_var: TYPOS_TAG
       push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
