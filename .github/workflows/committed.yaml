@@ -41,8 +41,8 @@ jobs:
     with:
       name: committed
       # renovate: datasource=github-releases depName=crate-ci/committed
-      version: v1.1.5
-      revision: ebdd4381247845abba019a2db29fe1c24662e4f1
+      version: v1.1.7
+      revision: 15229711f8f597474c0b636f327cde5969f9a529
       upstream: crate-ci/committed
       version_var: COMMITTED_TAG
       push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
