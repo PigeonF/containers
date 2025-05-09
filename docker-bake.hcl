@@ -182,12 +182,12 @@ target "buildkit-service" {
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "buildx-stable-1"
-        digest = "sha256:c457984bd29f04d6acc90c8d9e717afe3922ae14665f3187e0096976fe37b1c8"
+        digest = "sha256:87afb62ed6a762bb65b85d53819f3b341fb74a36d1fc0a1153a64f367637bfda"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "buildx-stable-1-rootless"
-        digest = "sha256:cb5bb371545222c430528556acfdf424144b69897f5deaad391bd227187e90df"
+        digest = "sha256:1899799ee15c1857f5129c09d0760ad574ee75e0e85fe4633090d56144e0912c"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
