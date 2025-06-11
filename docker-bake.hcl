@@ -83,7 +83,7 @@ variable "_base-images" {
       # renovate:
       name = "mcr.microsoft.com/windows/nanoserver"
       tag = "ltsc2025"
-      digest = "sha256:058da689b887f0db5899ab95a47277b78293269b6f4585aa0c64b2b4328156a9"
+      digest = "sha256:51f6e78e1614200dcfe1ca13eec122082507d64c194820946570343e8d5c4281"
       suffixes = ["ltsc", "ltsc2025"]
       platforms = ["windows/amd64"]
       rustflags = "-C target-feature=+crt-static"
