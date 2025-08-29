@@ -74,7 +74,7 @@ variable "_base-images" {
       # renovate: versioning=debian
       name = "docker.io/library/debian"
       tag = "bookworm-slim"
-      digest = "sha256:2424c1850714a4d94666ec928e24d86de958646737b1d113f5b2207be44d37d8"
+      digest = "sha256:b1a741487078b369e78119849663d7f1a5341ef2768798f7b7406c4240f86aef"
       suffixes = ["", "bookworm"]
       platforms = ["linux/amd64", "linux/arm64"]
       rustflags = "-C target-feature=-crt-static"
@@ -83,7 +83,7 @@ variable "_base-images" {
       # renovate:
       name = "mcr.microsoft.com/windows/nanoserver"
       tag = "ltsc2025"
-      digest = "sha256:83bd374c854fddd084ea9bf4864dd00b3810c34ea172892263958c2d738d0fdd"
+      digest = "sha256:f49449a998f8ba4b1bd5b00c2fbd0b7a34bf9471078f5d79b80db34be5833398"
       suffixes = ["ltsc", "ltsc2025"]
       platforms = ["windows/amd64"]
       rustflags = "-C target-feature=+crt-static"
