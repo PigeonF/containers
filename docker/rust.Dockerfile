@@ -16,7 +16,7 @@ ARG CRATE
 # =================================================================================================
 
 FROM --platform=$BUILDPLATFORM docker.io/library/rust:1@sha256:c0601cfa53ef38705af64f72b6b1f2b8afcd8f76de9aa621a8b45b4fa124694c AS rust
-FROM --platform=$BUILDPLATFORM docker.io/tonistiigi/xx:latest@sha256:010d4b66aed389848b0694f91c7aaee9df59a6f20be7f5d12e53663a37bd14e2 AS xx
+FROM --platform=$BUILDPLATFORM docker.io/tonistiigi/xx:latest@sha256:add602d55daca18914838a78221f6bbe4284114b452c86a48f96d59aeb00f5c6 AS xx
 FROM --platform=$BUILDPLATFORM ghcr.io/rust-cross/cargo-xwin:0.19.2@sha256:7c45501e0d7b796d551c3f7bc161de5ba13dddb5f22646d13440df4c59492dbf AS cargo-xwin
 
 # =================================================================================================
