@@ -182,32 +182,32 @@ target "buildkit-service" {
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "buildx-stable-1"
-        digest = "sha256:79cc6476ab1a3371c9afd8b44e7c55610057c43e18d9b39b68e2b0c2475cc1b6"
+        digest = "sha256:de10faf919fc71ba4eb1dd7bd6449566d012b0c9436b1c61bfee21d621b009aa"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "buildx-stable-1-rootless"
-        digest = "sha256:0c0ce4929976ace509f7a53878303504b2de8857829aea4932af9f7325a30f51"
+        digest = "sha256:0ffa2fcf6b8757c47d569b3ef0f03f9d5eb3b9ff5ce68d858f994f89b749da0c"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
-        tag = "v0.26.0"
-        digest = "sha256:93da6a53287490dd3b35952f73a109654ed9f260f2e6434db925125fa3ac6b2a"
+        tag = "v0.26.2"
+        digest = "sha256:de10faf919fc71ba4eb1dd7bd6449566d012b0c9436b1c61bfee21d621b009aa"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
-        tag = "v0.26.0-rootless"
-        digest = "sha256:2846ca21f8cadf9c949ab0c04cfe3619e111d6c527f4194d6e5b098abf6aeaff"
+        tag = "v0.26.2-rootless"
+        digest = "sha256:0ffa2fcf6b8757c47d569b3ef0f03f9d5eb3b9ff5ce68d858f994f89b749da0c"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "latest"
-        digest = "sha256:93da6a53287490dd3b35952f73a109654ed9f260f2e6434db925125fa3ac6b2a"
+        digest = "sha256:de10faf919fc71ba4eb1dd7bd6449566d012b0c9436b1c61bfee21d621b009aa"
       },
       {
         # renovate: datasource=docker depName=docker.io/moby/buildkit
         tag = "rootless"
-        digest = "sha256:2846ca21f8cadf9c949ab0c04cfe3619e111d6c527f4194d6e5b098abf6aeaff"
+        digest = "sha256:0ffa2fcf6b8757c47d569b3ef0f03f9d5eb3b9ff5ce68d858f994f89b749da0c"
       },
     ]
   }
