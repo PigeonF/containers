@@ -15,7 +15,7 @@ ARG CRATE
 # Abbreviations for third party images
 # =================================================================================================
 
-FROM --platform=$BUILDPLATFORM docker.io/library/rust:1@sha256:f58923369ba295ae1f60bc49d03f2c955a5c93a0b7d49acfb2b2a65bebaf350d AS rust
+FROM --platform=$BUILDPLATFORM docker.io/library/rust:1@sha256:4c7eb947d7e078f5c076e086c7b75c36ea0ec7c685f2244b3d79306deb7e44b7 AS rust
 FROM --platform=$BUILDPLATFORM docker.io/tonistiigi/xx:latest@sha256:c64defb9ed5a91eacb37f96ccc3d4cd72521c4bd18d5442905b95e2226b0e707 AS xx
 FROM --platform=$BUILDPLATFORM ghcr.io/rust-cross/cargo-xwin:0.21.2@sha256:875c47d177b1c339ed3dd001cb28ce718977b3691bd956f83ce8cac864bb65d0 AS cargo-xwin
 
