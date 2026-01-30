@@ -13,26 +13,18 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 
 ## Available Containers
 
-| Upstream Repository         | Container Image                                           | Architecture                                                               |
-| --------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.42.3`][typos]        | `amd64`, `arm64` [^rust-target]                                            |
+| Upstream Repository         | Container Image                                            | Architecture                                                               |
+| --------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.42.3`][typos]         | `amd64`, `arm64` [^rust-target]                                            |
 | [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.10`][committed] | `amd64`, `arm64` [^rust-target]                                            |
-| [moby/buildkit] [^buildkit] | [`ghcr.io/pigeonf/containers/buildkit`][buildkit]         | `amd64`, `arm/v7`, `arm64`, `s390x`, `ppc64le`, `riscv64` [^buildkit-arch] |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
 [typos]: https://github.com/PigeonF/containers/pkgs/container/containers%2Ftypos
 [crate-ci/committed]: https://github.com/crate-ci/committed
 [committed]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fcommitted
-[moby/buildkit]: https://github.com/moby/buildkit
-[buildkit]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fbuildkit
 
 [^rust-target]: The images are also built for `windows/arm64`, but are available under a separate tag (`<version>-ltsc`).
   See the package registry for details.
-
-[^buildkit]: This is a copy of the [upstream buildkit container](https://hub.docker.com/r/moby/buildkit).
-  The only difference is an added `EXPOSE` instruction so that the buildkit container can be used as a [GitLab CI/CD service](https://docs.gitlab.com/ee/ci/services/).
-
-[^buildkit-arch]: The same architectures as the upstream image.
 
 ## Building
 
