@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      # Only run on main when the workflow definition changes (which indicates a version bump from the upstream project)
+      # Only run on main when the workflow definition changes (which indicates a version bump from the upstream project).
       - .github/workflows/typos.yaml
 
   pull_request:
