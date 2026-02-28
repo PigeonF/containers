@@ -23,7 +23,7 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 [crate-ci/committed]: https://github.com/crate-ci/committed
 [committed]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fcommitted
 
-[^rust-target]: The images are also built for `windows/arm64`, but are available under a separate tag (`<version>-ltsc`).
+[^rust-target]: The images are also built for `windows/amd64`, but are available under a separate tag (`<version>-ltsc`).
   See the package registry for details.
 
 ## Building
