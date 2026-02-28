@@ -11,7 +11,7 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 
 [^container-images-install]: The easiest way to install an application in a container image without a package manager, is to copy the binary from a separate container image that already contains the binary.
 
-## Available Containers
+## Actively maintained Containers
 
 | Upstream Repository         | Container Image                                            | Architecture                                                               |
 | --------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -23,7 +23,7 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 [crate-ci/committed]: https://github.com/crate-ci/committed
 [committed]: https://github.com/PigeonF/containers/pkgs/container/containers%2Fcommitted
 
-[^rust-target]: The images are also built for `windows/arm64`, but are available under a separate tag (`<version>-ltsc`).
+[^rust-target]: The images are also built for `windows/amd64`, but are available under a separate tag (`<version>-ltsc`).
   See the package registry for details.
 
 ## Building
@@ -34,8 +34,6 @@ For example, to build the `typos` container
 ```console
 docker buildx bake typos
 ```
-
-For more detailed instructions, refer to the [developer documentation](./docs/developing.md).
 
 ## License
 
