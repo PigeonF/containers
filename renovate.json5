@@ -83,7 +83,7 @@
         // "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)((?:ENV|ARG) .+?(?:\\r\\n|\\r|\\n))+",
         // "(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)(?:\\r\\n|\\r|\\n)((?:ENV|ARG) .+?(?:\\r\\n|\\r|\\n))*",
         // "(?:ENV|ARG) .+?_CHECKSUM(?:_.+?)?=(?<currentDigest>.+?)(?:\\r\\n|\\r|\\n)"
-        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)",
+        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)(?:\\r\\n|\\r|\\n)",
         "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?) digestVersion=(?<currentValue>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)(?:ENV|ARG) .+?_CHECKSUM(?:_.+?)?=(?<currentDigest>.+?)(?:\\r\\n|\\r|\\n)",
       ],
     },

@@ -9,7 +9,6 @@ FROM docker.io/library/debian:bookworm-slim AS base-linux
 
 FROM --platform=$BUILDPLATFORM docker.io/library/busybox:latest AS packages
 WORKDIR /packages/
-ARG TYPOS_VERSION=1.44.0
 # renovate: datasource=github-releases packageName=crate-ci/typos
 ARG TYPOS_VERSION=v1.44.0
 # renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.44.0
@@ -40,5 +39,7 @@ COPY --link --from=packages ["/packages/typos-${TARGETPLATFORM}/", "Program File
 ENV PATH="c:\\Program Files\\typos;c:\\Windows\\System32;c:\\Windows"
 
 FROM base-linux AS typos-linux
+ARG TARGETPLATFORM
+COPY --link --from=packages /packages/typos-${TARGETPLATFORM}/typos /usr/local/bin/
 
 FROM typos-${TARGETOS} AS typos
