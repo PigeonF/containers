@@ -39,5 +39,7 @@ COPY --link --from=packages ["/packages/committed-${TARGETPLATFORM}/", "Program 
 ENV PATH="c:\\Program Files\\committed;c:\\Windows\\System32;c:\\Windows"
 
 FROM base-linux AS committed-linux
+ARG TARGETPLATFORM
+COPY --link --from=packages /packages/committed-${TARGETPLATFORM}/committed /usr/local/bin/
 
 FROM committed-${TARGETOS} AS committed
