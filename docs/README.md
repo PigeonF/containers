@@ -6,7 +6,6 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Project Documentation
 
-- [Read notes about how to hack on the project](./developing.md)
 - [Read the maintainer guide](./maintenance.md)
 
 ## Project Goals
@@ -31,9 +30,7 @@ The former defines which containers to build (and how), whereas the latter is us
 
 - [**The `docker-bake.hcl` file**](../docker-bake.hcl) contains definitions on how to build the containers using `docker buildx bake`.
 
-- [**The `docker/` folder**](../docker/) contains dockerfiles that are shared between multiple containers.
-
-  - [**The `rust.Dockerfile`**](../docker/rust.Dockerfile) is used to build glibc and msvc binaries from a rust project.
+- [**The `docker/` folder**](../docker/) contains dockerfiles that are used to build the containers.
 
 - [**The `docs/` folder**](../docs/) contains project documentation.
 

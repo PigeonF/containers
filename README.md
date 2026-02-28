@@ -11,7 +11,7 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 
 [^container-images-install]: The easiest way to install an application in a container image without a package manager, is to copy the binary from a separate container image that already contains the binary.
 
-## Available Containers
+## Actively maintained Containers
 
 | Upstream Repository         | Container Image                                            | Architecture                                                               |
 | --------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -34,8 +34,6 @@ For example, to build the `typos` container
 ```console
 docker buildx bake typos
 ```
-
-For more detailed instructions, refer to the [developer documentation](./docs/developing.md).
 
 ## License
 
