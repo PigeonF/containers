@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1
 
 # SPDX-FileCopyrightText: 2026 Jonas Fierlings <fnoegip@gmail.com>
 #
