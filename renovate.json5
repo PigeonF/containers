@@ -37,12 +37,9 @@
     {
       // Digests for base images are deliberately not pinned in Dockerfile (pinning happens in
       // docker-bake.hcl).
-      description: 'Do not pin in rust.Dockerfile',
+      description: 'Do not pin in Dockerfiles',
       matchDatasources: [
         'docker',
-      ],
-      matchFileNames: [
-        'docker/rust.Dockerfile',
       ],
       pinDigests: false,
     },
@@ -69,6 +66,25 @@
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+version\\s*:\\s*["\']?(?<currentValue>.+?)["\']?\\s(?:\\s+revision\\s*:\\s*["\']?(?<currentDigest>.+?)["\']?\\s)?',
+      ],
+    },
+    {
+      "customType": "regex",
+      "description": "Update dependency versions in Dockerfiles",
+      "managerFilePatterns": [
+        "**/[Dd]ockerfile*",
+        "**/[Cc]ontainerfile*",
+        "**/*.[Dd]ockerfile*",
+        "**/*.[Cc]ontainerfile*",
+      ],
+      // "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        // https://github.com/renovatebot/renovate/discussions/41557
+        // "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)((?:ENV|ARG) .+?(?:\\r\\n|\\r|\\n))+",
+        // "(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)(?:\\r\\n|\\r|\\n)((?:ENV|ARG) .+?(?:\\r\\n|\\r|\\n))*",
+        // "(?:ENV|ARG) .+?_CHECKSUM(?:_.+?)?=(?<currentDigest>.+?)(?:\\r\\n|\\r|\\n)"
+        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)",
+        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?) digestVersion=(?<currentValue>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?:\\r\\n|\\r|\\n)(?:ENV|ARG) .+?_CHECKSUM(?:_.+?)?=(?<currentDigest>.+?)(?:\\r\\n|\\r|\\n)",
       ],
     },
     {

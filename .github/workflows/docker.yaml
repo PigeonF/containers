@@ -39,7 +39,7 @@ concurrency:
 
 jobs:
   containers:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     name: ${{ inputs.name }} ${{ inputs.version }}
     permissions:
       contents: read # for actions/checkout
