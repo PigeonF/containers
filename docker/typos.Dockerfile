@@ -10,13 +10,13 @@ FROM docker.io/library/debian:bookworm-slim AS base-linux
 FROM --platform=$BUILDPLATFORM docker.io/library/busybox:latest AS packages
 WORKDIR /packages/
 # renovate: datasource=github-releases packageName=crate-ci/typos
-ARG TYPOS_VERSION=v1.45.2
-# renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.45.2
-ARG TYPOS_CHECKSUM_LINUX_AMD64=8463790818b926ef97bd03633ba8943549040d7defd3951e8518903f01d360a8
-# renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.45.2
-ARG TYPOS_CHECKSUM_LINUX_ARM64=838aad0c2a22ef4d8b4195fc288e6d7d94ba54871adc6414caa8199780ae1ef5
-# renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.45.2
-ARG TYPOS_CHECKSUM_WINDOWS_AMD64=c0a53545ffcc5a0d698af4dead167184b0e8c20fd06013fd58dddceadc901689
+ARG TYPOS_VERSION=v1.46.2
+# renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.46.2
+ARG TYPOS_CHECKSUM_LINUX_AMD64=d68c1a9c5abd8de11f7749edfa414087c8bc828e89064714487d23c89f36b06e
+# renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.46.2
+ARG TYPOS_CHECKSUM_LINUX_ARM64=311f2a15e8433c895cd9ee3198530bbff552f59609eba739f5bd9ceb2a2c0887
+# renovate: datasource=github-release-attachments packageName=crate-ci/typos digestVersion=v1.46.2
+ARG TYPOS_CHECKSUM_WINDOWS_AMD64=ddc4ae26822e806ce84bc410643d02a3dac53aac9ab2a5f389624418c5654a17
 ADD \
   --unpack=true \
   --checksum=sha256:${TYPOS_CHECKSUM_LINUX_AMD64} \
