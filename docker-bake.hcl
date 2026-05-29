@@ -74,7 +74,7 @@ variable "_bases" {
       # renovate: versioning=debian
       name = "docker.io/library/debian"
       tag = "bookworm-slim"
-      digest = "sha256:4724b8cc51e33e398f0e2e15e18d5ec2851ff0c2280647e1310bc1642182655d"
+      digest = "sha256:0104b334637a5f19aa9c983a91b54c89887c0984081f2068983107a6f6c21eeb"
       suffixes = ["", "bookworm"]
       platforms = ["linux/amd64", "linux/arm64"]
     }
