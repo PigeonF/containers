@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: 0BSD
 
 FROM mcr.microsoft.com/windows/nanoserver:ltsc2025 AS base-windows
-FROM docker.io/library/debian:bookworm-slim AS base-linux
+FROM docker.io/library/debian:trixie-slim AS base-linux
 
 FROM --platform=$BUILDPLATFORM docker.io/library/busybox:latest AS packages
 WORKDIR /packages/
