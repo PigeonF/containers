@@ -73,9 +73,9 @@ variable "_bases" {
     linux = {
       # renovate: versioning=debian
       name = "docker.io/library/debian"
-      tag = "bookworm-slim"
-      digest = "sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818"
-      suffixes = ["", "bookworm"]
+      tag = "trixie-slim"
+      digest = "sha256:020c0d20b9880058cbe785a9db107156c3c75c2ac944a6aa7ab59f2add76a7bd"
+      suffixes = ["", "trixie"]
       platforms = ["linux/amd64", "linux/arm64"]
     }
     windows = {
