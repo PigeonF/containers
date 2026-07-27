@@ -82,7 +82,7 @@ variable "_bases" {
       # renovate:
       name = "mcr.microsoft.com/windows/nanoserver"
       tag = "ltsc2025"
-      digest = "sha256:c71ca7f010608e202e62df477ca19542dd9c44e2a20508af8f92ff63859b0540"
+      digest = "sha256:fda578d34f56de2f60d91a178fd954fdc95596ebb67b3bc363deb708ef1fd94c"
       suffixes = ["ltsc", "ltsc2025"]
       platforms = ["windows/amd64"]
     }
