@@ -74,7 +74,7 @@ variable "_bases" {
       # renovate: versioning=debian
       name = "docker.io/library/debian"
       tag = "trixie-slim"
-      digest = "sha256:d7e12182ce18b85b93007c1dedf31f2d29e01ccf3182cc4017c709b6259bc132"
+      digest = "sha256:a99cfc517144bc59b1978475ec53b46ecabec7e43635402ee5b77cc54cd1b20a"
       suffixes = ["", "trixie"]
       platforms = ["linux/amd64", "linux/arm64"]
     }
