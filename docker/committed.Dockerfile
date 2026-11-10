@@ -10,13 +10,13 @@ FROM docker.io/library/debian:trixie-slim AS base-linux
 FROM --platform=$BUILDPLATFORM docker.io/library/busybox:latest AS packages
 WORKDIR /packages/
 # renovate: datasource=github-releases packageName=crate-ci/committed
-ARG COMMITTED_VERSION=v1.1.11
-# renovate: datasource=github-release-attachments packageName=crate-ci/committed digestVersion=v1.1.11
-ARG COMMITTED_CHECKSUM_LINUX_AMD64=1e5c20049eeaa4633e6798283913f92dc90a97f2b5c6dfc28e8c4b7e77a67157
-# renovate: datasource=github-release-attachments packageName=crate-ci/committed digestVersion=v1.1.11
-ARG COMMITTED_CHECKSUM_LINUX_ARM64=96d6334ab2dccc0e90b67ebdcaa2af856f29eadef48161926e21a0e35f1ae80d
-# renovate: datasource=github-release-attachments packageName=crate-ci/committed digestVersion=v1.1.11
-ARG COMMITTED_CHECKSUM_WINDOWS_AMD64=af4f5a65320471751ed1dfbb5502f15f4857cea797b077c6049acb2b995d293b
+ARG COMMITTED_VERSION=v1.1.12
+# renovate: datasource=github-release-attachments packageName=crate-ci/committed digestVersion=v1.1.12
+ARG COMMITTED_CHECKSUM_LINUX_AMD64=9a860b0a557bc842df663ce923213ff36f077ae2783f8db3123738823279387f
+# renovate: datasource=github-release-attachments packageName=crate-ci/committed digestVersion=v1.1.12
+ARG COMMITTED_CHECKSUM_LINUX_ARM64=2077f9fa0157f3e0bfa7273327aa26c793d05b16620e046e499a982dd6fd2e7c
+# renovate: datasource=github-release-attachments packageName=crate-ci/committed digestVersion=v1.1.12
+ARG COMMITTED_CHECKSUM_WINDOWS_AMD64=9d8608d3622037f19c784bc907903d840c52c1d5e1e4f16daef8653d8a8894b6
 ADD \
   --unpack=true \
   --checksum=sha256:${COMMITTED_CHECKSUM_LINUX_AMD64} \
