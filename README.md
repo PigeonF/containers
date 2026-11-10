@@ -15,8 +15,8 @@ The primary purpose is for use in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/d
 
 | Upstream Repository         | Container Image                                            | Architecture                                                               |
 | --------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.51.1`][typos]         | `amd64`, `arm64` [^rust-target]                                            |
-| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.11`][committed] | `amd64`, `arm64` [^rust-target]                                            |
+| [crate-ci/typos]            | [`ghcr.io/pigeonf/containers/typos:1.52.1`][typos]         | `amd64`, `arm64` [^rust-target]                                            |
+| [crate-ci/committed]        | [`ghcr.io/pigeonf/containers/committed:1.1.12`][committed] | `amd64`, `arm64` [^rust-target]                                            |
 
 [crate-ci/typos]: https://github.com/crate-ci/typos
 [typos]: https://github.com/PigeonF/containers/pkgs/container/containers%2Ftypos
