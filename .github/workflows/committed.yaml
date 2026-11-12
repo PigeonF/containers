@@ -34,7 +34,7 @@ defaults:
 
 jobs:
   build-committed:
-    uses: ./.github/workflows/docker.yaml
+    uses: $/.github/workflows/docker.yaml
     with:
       name: committed
       # renovate: datasource=github-releases depName=crate-ci/committed
